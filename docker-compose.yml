@@ -1,0 +1,11 @@
+services:
+    textpod-docker:
+        image: textpod-docker
+        build: .
+        ports:
+            - '8080:80'
+        volumes:
+            - './attachments:/app/attachments'
+            - './notes.md:/app/notes.md'
+        container_name: textpod
+
