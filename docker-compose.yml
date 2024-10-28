@@ -3,7 +3,7 @@ services:
         image: textpod-docker
         build: .
         ports:
-            - '8080:80'
+            - '8099:80'
         volumes:
             - './attachments:/app/attachments'
             - './notes.md:/app/notes.md'
