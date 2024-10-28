@@ -1,34 +1,17 @@
-# Textpod
+# Textpod-Docker
 
-Local, web-based notetaking app inspired by "One Big Text File" idea. Short demo (video, no sound):
+Read more of Textpod [here](https://github.com/freetonik/textpod)
 
-[![Textpod short demo video](https://img.youtube.com/vi/VAqJJxaJNVM/0.jpg)](https://www.youtube.com/watch?v=VAqJJxaJNVM)
+This is a wrapper of textpod for running in Docker.
+It installs monolith and textpod with cargo.
+It also installs nginx as a reverse proxy.
 
-
-- Single page with all notes and a simple entry form (Markdown)
-- All notes are stored in a single `notes.md` file
-- Search/filtering when you start typing with `/`
-- Start a link with `+` and Textpod will save a local single-page copy
-- File and image attachments
-
-## Installation
+## Installation / Update
 
 ```
-cargo install textpod
+git clone https://github.com/khannover/textpod-docker
+docker build -t textpod .
+docker run --rm --name textpod -d -v ./notes.md:/app/notes.md -v ./attachments:/app/attachments -p 8080:80 textpod
 ```
 
-In order to download webpages, you need to have `monolith` installed.
-
-```
-cargo install monolith
-```
-
-## Usage
-
-Run `textpod` in any directory. It will create a `notes.md` file if it doesn't exist. It will create `attachments` directory for file and image attachments.
-Webpages are saved in `attachments/webpages`. You can specify the port with `-p` flag, e.g. `textpod -p 8080`.
-
-## Contributing
-
-Feel free to open issues and pull requests. I want to keep the code very simple and accessible to beginners. The goal is not to create another feature-rich notetaking app, but to keep it simple and fast.
-A "one big text file" idea is very powerful and I just want to make it slightly enhanced.
+Now you can open your browser on http://localhost:8080
